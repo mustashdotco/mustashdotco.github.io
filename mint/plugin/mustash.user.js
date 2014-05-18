@@ -8,7 +8,9 @@
 // @copyright  2012+, Mustash.co
 // ==/UserScript==
 
-var SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR = ["Netflix", "Amazon Prime", "Birch Box", "Zipcar"];
+function AppMeasurement() {};
+
+var SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR = ["Netflix", "Amazon Prime", "Birch Box", "Zipcar", "Dollar Shave Club"];
 
 function callWhenReady(selector, callback) {
     if ($(selector).closest('body').length) {
@@ -104,11 +106,20 @@ function loadHack() {
                 for(i in transactions) { 
                     var transaction = transactions[i];
                     if (SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR.indexOf(transaction.Description) > -1) {
-                        mySubscriptions[transaction.Description] = transaction;
+                        if (mySubscriptions.hasOwnProperty(transaction.Description)) {
+                           	mySubscriptions[transaction.Description]["firstTransactionDate"] = transaction.Date;
+                             mySubscriptions[transaction.Description]["totalSpent"] += parseInt(transaction.Amount);
+                        } else {
+                            mySubscriptions[transaction.Description] = {};
+                            mySubscriptions[transaction.Description]["description"] = transaction.Description;
+                            mySubscriptions[transaction.Description]["price"] = transaction.Amount;
+                            mySubscriptions[transaction.Description]["totalSpent"] = parseInt(transaction.Amount);
+                            mySubscriptions[transaction.Description]["lastTransactionDate"] = transaction.Date;
+                        }
                     }
                 }
+                console.log(mySubscriptions);
             }
-            console.log(mySubscriptions);
         });
     });
 }
