@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://mustashdotco.github.io/mint/css/main.css" />
+  <link rel="stylesheet" href="./mint/css/main.css" />
 </head>
 <body ng-controller="default">
   <div class="container">
     <header>
-      <img class="logo" src="https://mustashdotco.github.io/mint/img/mustash.png" />
+      <img class="logo" src="./mint/img/mustash.png" />
       <a class="menu-link">
         <span></span>
         <span></span>
@@ -32,9 +32,9 @@
           <tbody>
             <tr ng-repeat="subscription in subscriptions">
               <td>{{subscription.name}}</td>
-              <td>{{subscription.monthly}}</td>
-              <td>{{subscription.total}}</td>
-              <td>{{subscription.time}}</td>
+              <td>${{subscription.monthly}}</td>
+              <td>${{subscription.total}}</td>
+              <td>{{subscription.time}} days</td>
               <td><input type="checkbox" /></td>
             </tr>
           </tbody>
@@ -61,7 +61,7 @@
       </line-chart>
 
       <div class="pie-container">
-        <h2 class="chart-header">Total cost for all my subscriptions: <span class="price">$350</span></h2>
+        <h2 class="chart-header">Total cost for all my subscriptions: <span class="price">${{total()}}</span></h2>
         <pie-chart class="pie-chart" 
                    data="[20, 40, 40]"
                    height="150"
@@ -87,7 +87,7 @@
       </div>
     </div>
   </div>
-  <script src="https://mustashdotco.github.io/mint/js/app.js"></script>
+  <script src="./mint/js/app.js"></script>
 </body>
 </html>
 

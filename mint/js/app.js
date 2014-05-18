@@ -41825,6 +41825,14 @@ angular.module('ngAnimate', ['ng'])
 
   root.Application.controller('default', function($scope) {
     $scope.subscriptions = JSON.parse(location.hash.substr(1));
+	
+	$scope.total = function() {
+		var sum = 0;
+		$scope.subscriptions.forEach(function(subscription) {
+			sum += parseInt(subscription.monthly);
+		});
+		return sum;
+	}
   });
   
 })(this);(function(root){
