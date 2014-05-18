@@ -35,7 +35,7 @@
               <td>${{subscription.monthly}}</td>
               <td>${{subscription.total}}</td>
               <td>{{subscription.time}} days</td>
-              <td><input type="checkbox" /></td>
+              <td><toggle-switch ng-model="subscription.subscribed"></toggle-switch></td>
             </tr>
           </tbody>
         </table>
