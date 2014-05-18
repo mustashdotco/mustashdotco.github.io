@@ -1,0 +1,283 @@
+/* line 1, /Users/david/Sites/b2b_weekend/less/main.less */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+/* line 7, /Users/david/Sites/b2b_weekend/less/main.less */
+[ng-view].ng-enter,
+[ng-view].ng-leave {
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+/* line 12, /Users/david/Sites/b2b_weekend/less/main.less */
+[ng-view].ng-enter,
+[ng-view].ng-leave.ng-leave-active {
+  opacity: 0;
+  position: absolute;
+  -webkit-transform: translateX(-500px);
+  -ms-transform: translateX(-500px);
+  transform: translateX(-500px);
+}
+/* line 19, /Users/david/Sites/b2b_weekend/less/main.less */
+[ng-view].ng-leave,
+[ng-view].ng-enter.ng-enter-active {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transform: translateX(0px);
+}
+/* line 26, /Users/david/Sites/b2b_weekend/less/main.less */
+html {
+  background: rgba(0, 0, 0, 0.5);
+}
+/* line 30, /Users/david/Sites/b2b_weekend/less/main.less */
+header {
+  float: left;
+  margin-bottom: 17px;
+  width: 100%;
+}
+/* line 36, /Users/david/Sites/b2b_weekend/less/main.less */
+.logo {
+  float: left;
+}
+/* line 40, /Users/david/Sites/b2b_weekend/less/main.less */
+.menu-link {
+  display: block;
+  float: right;
+  height: 20px;
+  width: 24px;
+}
+/* line 46, /Users/david/Sites/b2b_weekend/less/main.less */
+.menu-link span {
+  background-color: black;
+  display: block;
+  height: 1px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+/* line 55, /Users/david/Sites/b2b_weekend/less/main.less */
+.container {
+  background: white;
+  height: 545px;
+  margin: 0 auto;
+  padding: 33px 50px;
+  overflow: auto;
+  width: 900px;
+}
+/* line 64, /Users/david/Sites/b2b_weekend/less/main.less */
+.main,
+.charts {
+  height: 436px;
+  position: relative;
+}
+/* line 70, /Users/david/Sites/b2b_weekend/less/main.less */
+.main {
+  float: left;
+  width: 489px;
+}
+/* line 75, /Users/david/Sites/b2b_weekend/less/main.less */
+.charts {
+  float: right;
+  width: 282px;
+}
+/* line 80, /Users/david/Sites/b2b_weekend/less/main.less */
+.subscriptions {
+  height: 370px;
+  margin-bottom: 10px;
+  overflow: auto;
+  width: 100%;
+}
+/* line 86, /Users/david/Sites/b2b_weekend/less/main.less */
+.subscriptions table {
+  border-collapse: collapse;
+  width: 100%;
+}
+/* line 91, /Users/david/Sites/b2b_weekend/less/main.less */
+.subscriptions th,
+.subscriptions td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/* line 98, /Users/david/Sites/b2b_weekend/less/main.less */
+.subscriptions td:not(:first-child) {
+  border-left: 1px solid #ebebeb;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+/* line 104, /Users/david/Sites/b2b_weekend/less/main.less */
+.subscriptions tbody tr:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+/* line 109, /Users/david/Sites/b2b_weekend/less/main.less */
+.cta-cols {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  float: left;
+  width: 100%;
+}
+/* line 118, /Users/david/Sites/b2b_weekend/less/main.less */
+.cta-button {
+  background-color: #e8e8e8;
+  float: left;
+  height: 54px;
+  padding: 10px;
+  width: 233px;
+}
+/* line 125, /Users/david/Sites/b2b_weekend/less/main.less */
+.cta-button + .cta-button {
+  float: right;
+}
+/* line 129, /Users/david/Sites/b2b_weekend/less/main.less */
+.cta-button .cta-button-main,
+.cta-button .cta-button-sub {
+  font-weight: normal;
+  margin: 0;
+}
+/* line 136, /Users/david/Sites/b2b_weekend/less/main.less */
+.cta-button .cta-button-main {
+  font-size: 13px;
+  line-height: 13px;
+  margin: 0;
+}
+/* line 142, /Users/david/Sites/b2b_weekend/less/main.less */
+.cta-button .cta-button-sub {
+  color: #929191;
+  font-size: 13px;
+}
+/* line 148, /Users/david/Sites/b2b_weekend/less/main.less */
+.chart-header {
+  font-size: 13px;
+  font-weight: 200;
+}
+/* line 152, /Users/david/Sites/b2b_weekend/less/main.less */
+.chart-header .price {
+  color: #f15b4e;
+  font-weight: 600;
+}
+/* line 159, /Users/david/Sites/b2b_weekend/less/main.less */
+.small-head {
+  color: #929191;
+  font-size: 9px;
+  font-weight: normal;
+  line-height: 11px;
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: left;
+}
+/* line 169, /Users/david/Sites/b2b_weekend/less/main.less */
+.line-chart {
+  margin-top: 0px;
+  width: 100%;
+  height: 150px;
+}
+/* line 175, /Users/david/Sites/b2b_weekend/less/main.less */
+.pie-container {
+  position: relative;
+}
+/* line 179, /Users/david/Sites/b2b_weekend/less/main.less */
+.pie-container .price {
+  position: absolute;
+  bottom: 44px;
+  font-size: 52px;
+  opacity: .7;
+  left: 0;
+  right: 0;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: white;
+  text-shadow: 2px 2px #929191, -2px -2px #929191, 0px -2px #929191, -2px 0;
+  text-align: center;
+  -webkit-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+  z-index: 30;
+}
+/* line 196, /Users/david/Sites/b2b_weekend/less/main.less */
+.pie-chart {
+  margin: 0 auto;
+  height: 150px;
+  width: 150px;
+}
+/* line 202, /Users/david/Sites/b2b_weekend/less/main.less */
+.charts-key-label {
+  float: left;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 13px;
+  margin: 0;
+  padding: 0;
+}
+/* line 211, /Users/david/Sites/b2b_weekend/less/main.less */
+.charts-key ul {
+  float: right;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 217, /Users/david/Sites/b2b_weekend/less/main.less */
+.charts-key ul li {
+  float: left;
+  margin-right: 10px;
+  position: relative;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+/* line 224, /Users/david/Sites/b2b_weekend/less/main.less */
+.charts-key ul li:first-child {
+  border-right: 1px solid #dedede;
+}
+/* line 228, /Users/david/Sites/b2b_weekend/less/main.less */
+.charts-key ul li:last-child {
+  padding-right: 0;
+}
+/* line 235, /Users/david/Sites/b2b_weekend/less/main.less */
+.charts-key {
+  background-color: #e8e8e8;
+  height: 54px;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+/* line 246, /Users/david/Sites/b2b_weekend/less/main.less */
+.charts-key-main {
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 9px;
+}
+/* line 252, /Users/david/Sites/b2b_weekend/less/main.less */
+.charts-key-swatch {
+  border-radius: 100%;
+  height: 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+}
+/* line 261, /Users/david/Sites/b2b_weekend/less/main.less */
+li:nth-child(1) .charts-key-swatch {
+  background-color: #f15b4e;
+}
+/* line 265, /Users/david/Sites/b2b_weekend/less/main.less */
+li:nth-child(2) .charts-key-swatch {
+  background-color: #ffc600;
+}
+/* line 269, /Users/david/Sites/b2b_weekend/less/main.less */
+.charts-key-sub {
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 300;
+}
+/* line 275, /Users/david/Sites/b2b_weekend/less/main.less */
+.charts-key-amount {
+  font-size: 12px;
+  font-weight: 300;
+}
+/* line 280, /Users/david/Sites/b2b_weekend/less/main.less */
+canvas {
+  display: block;
+}
