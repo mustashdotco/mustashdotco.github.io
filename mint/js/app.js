@@ -41828,7 +41828,7 @@ angular.module('ngAnimate', ['ng'])
 	
 	$scope.total = function() {
 		var sum = 0;
-		$scope.subscriptions.forEach(function(subscription) {
+		angular.forEach($scope.subscriptions,function(subscription) {
 			sum += parseInt(subscription.monthly);
 		});
 		return sum;
