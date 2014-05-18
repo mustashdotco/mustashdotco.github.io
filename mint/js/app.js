@@ -41821,18 +41821,54 @@ angular.module('ngAnimate', ['ng'])
     }
   });
 })(this);(function(root) {
+  root.Application.directive('toggleSwitch', function() {
+
+    return {
+      restrict: 'E',
+      replace: true,
+      template: '<div class="toggle-switch"><div class="toggle-button">' + 
+                  '<i class="toggle-on"></i><i class="toggle-off"></i>' +
+                '</div></div>',
+      require: 'ngModel',
+      link: function(scope, elem, attrs, ngModel) {
+
+        scope.$watch(function() {
+          return ngModel.$viewValue;
+        }, function(_new) {
+          console.log('changed', _new);
+          elem.removeClass('on off');
+          if (! _new) {
+            elem.addClass('on')
+          } else {
+            elem.addClass('off');
+          }
+        });
+
+
+        elem.on('click', function() {
+          scope.$apply(function(){
+            var newVal = ngModel.$modelValue ? false : true;
+            ngModel.$setViewValue(newVal);
+            console.log(ngModel);
+          });
+        });
+      }
+    }
+  });
+})(this);(function(root) {
   'use strict';
 
   root.Application.controller('default', function($scope) {
+
     $scope.subscriptions = JSON.parse(location.hash.substr(1));
-	
-	$scope.total = function() {
-		var sum = 0;
-		angular.forEach($scope.subscriptions,function(subscription) {
-			sum += parseInt(subscription.monthly);
-		});
-		return sum;
-	}
+    $scope.total = function() {
+      var sum = 0;
+      angular.forEach($scope.subscriptions,function(subscription) {
+        sum += parseInt(subscription.monthly);
+      });
+      return sum;
+    }
+
   });
   
 })(this);(function(root){
