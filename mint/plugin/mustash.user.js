@@ -8,6 +8,8 @@
 // @copyright  2012+, Mustash.co
 // ==/UserScript==
 
+var SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR = ["Netflix", "Amazon Prime", "Birch Box", "Zipcar"];
+
 function callWhenReady(selector, callback) {
     if ($(selector).closest('body').length) {
         callback.call();
@@ -84,12 +86,14 @@ function CSV2JSON(csv) {
     var json = JSON.stringify(objArray);
     var str = json.replace(/},/g, "},\r\n");
 
-    return str;
+    return JSON.parse(str);
 }
 
 function loadHack() {
     $("#controls-add").after("<a class='button' style='margin-left: 16px; width: 195px;' href='javascript://' id='controls-subscriptions' title='View your subscriptions with Mustash.co'>Your subscriptions with Mustash.co</a>");
-
+	
+    var mySubscriptions = {};
+    
     $("#controls-subscriptions").on("click", function () {   
         $.ajax({
             url: $("#transactionExport").attr("href"),
@@ -97,8 +101,14 @@ function loadHack() {
         .done(function( csvAsString ) {
             if ( console && console.log ) {
                 var transactions = CSV2JSON(csvAsString);
-                console.log(transactions);
+                for(i in transactions) { 
+                    var transaction = transactions[i];
+                    if (SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR.indexOf(transaction.Description) > -1) {
+                        mySubscriptions[transaction.Description] = transaction;
+                    }
+                }
             }
+            console.log(mySubscriptions);
         });
     });
 }
