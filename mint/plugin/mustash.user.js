@@ -4,13 +4,27 @@
 // @version    0.1
 // @description  See your subscriptions in your mint page
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js
 // @match      http*://*.mint.com/transaction.event*
 // @copyright  2012+, Mustash.co
 // ==/UserScript==
 
 function AppMeasurement() {};
 
-var SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR = ["Netflix", "Amazon Prime", "Birch Box", "Zipcar", "Dollar Shave Club"];
+var SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR = [
+    "Netflix",
+    "Amazon Prime", 
+    "Birch Box", 
+    "Zipcar",
+    "Dollar Shave Club",
+    "Hulu",
+    "Dropbox",
+    "Adobe"
+];
+
+var SUBSCRIPTION_ORIGINAL_DESCRIPTIONS_TO_CHECK_FOR = [
+    "AmazonPrime Membership"
+];
 
 function callWhenReady(selector, callback) {
     if ($(selector).closest('body').length) {
@@ -93,10 +107,9 @@ function CSV2JSON(csv) {
 
 function loadHack() {
     $("#controls-add").after("<a class='button' style='margin-left: 16px; width: 195px;' href='javascript://' id='controls-subscriptions' title='View your subscriptions with Mustash.co'>Your subscriptions with Mustash.co</a>");
-	
-    var mySubscriptions = {};
     
-    $("#controls-subscriptions").on("click", function () {   
+    $("#controls-subscriptions").on("click", function () { 
+        var mySubscriptions = {};
         $.ajax({
             url: $("#transactionExport").attr("href"),
         })
@@ -105,18 +118,23 @@ function loadHack() {
                 var transactions = CSV2JSON(csvAsString);
                 for(i in transactions) { 
                     var transaction = transactions[i];
-                    if (SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR.indexOf(transaction.Description) > -1) {
+                    if (SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR.indexOf(transaction.Description) > -1 || SUBSCRIPTION_ORIGINAL_DESCRIPTIONS_TO_CHECK_FOR.indexOf(transaction["Original Description"]) > -1) {
                         if (mySubscriptions.hasOwnProperty(transaction.Description)) {
                            	mySubscriptions[transaction.Description]["firstTransactionDate"] = transaction.Date;
-                             mySubscriptions[transaction.Description]["totalSpent"] += parseInt(transaction.Amount);
+                            mySubscriptions[transaction.Description]["totalSpent"] += parseInt(transaction.Amount);
                         } else {
                             mySubscriptions[transaction.Description] = {};
                             mySubscriptions[transaction.Description]["description"] = transaction.Description;
                             mySubscriptions[transaction.Description]["price"] = transaction.Amount;
                             mySubscriptions[transaction.Description]["totalSpent"] = parseInt(transaction.Amount);
                             mySubscriptions[transaction.Description]["lastTransactionDate"] = transaction.Date;
+                            mySubscriptions[transaction.Description]["firstTransactionDate"] = transaction.Date;
                         }
                     }
+                }
+                debugger;
+                for(i in mySubscriptions) { 
+                    mySubscriptions[i]["period"] = moment().diff(mySubscriptions[i]["firstTransactionDate"], 'days');
                 }
                 console.log(mySubscriptions);
             }
