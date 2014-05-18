@@ -41824,17 +41824,7 @@ angular.module('ngAnimate', ['ng'])
   'use strict';
 
   root.Application.controller('default', function($scope) {
-
-    $scope.subscriptions = [];
-
-    for (var i = 0; i < 20; i++) {
-      $scope.subscriptions.push({
-        name: 'my subscription',
-        monthly: '15$',
-        total: '$350.00',
-        time: '5 Years 1 month'
-      })
-    }
+    $scope.subscriptions = JSON.parse(location.hash.substr(1));
   });
   
 })(this);(function(root){
