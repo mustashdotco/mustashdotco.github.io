@@ -110,7 +110,7 @@ function CSV2JSON(csv) {
 
 function loadHack() {
     $("#controls-add").after("<a class='button' style='margin-left: 16px; width: 195px;' href='javascript://' id='controls-subscriptions' title='View your subscriptions with Mustash.co'>Your subscriptions with Mustash.co</a>");
-    $(".table-main").prepend("<iframe id='mustash' src='https://mustashdotco.github.io#[]' style='width: 923px;height: 561px;z-index: 100000;position: absolute;display: block;' class='hide'></iframe>");
+    $(".table-main").prepend("<iframe id='mustash' src='https://mustashdotco.github.io/mint/#[]' style='width: 923px;height: 561px;z-index: 100000;position: absolute;display: block;' class='hide'></iframe>");
     
     $("#controls-subscriptions").on("click", function () { 
         var mySubscriptions = {};
@@ -141,7 +141,7 @@ function loadHack() {
                     mySubscriptions[i]["time"] = moment().diff(mySubscriptions[i]["firstTransactionDate"], 'days');
                     subscriptionArray.push(mySubscriptions[i])
                 }
-                $("#mustash").attr('src','https://mustashdotco.github.io#' + JSON.stringify(mySubscriptions));
+                $("#mustash").attr('src','https://mustashdotco.github.io/mint/#' + JSON.stringify(mySubscriptions));
                 $("#mustash").removeClass("hide");
             }
         });
