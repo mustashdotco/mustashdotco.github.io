@@ -107,6 +107,7 @@ function CSV2JSON(csv) {
 
 function loadHack() {
     $("#controls-add").after("<a class='button' style='margin-left: 16px; width: 195px;' href='javascript://' id='controls-subscriptions' title='View your subscriptions with Mustash.co'>Your subscriptions with Mustash.co</a>");
+    $("#controls-subscriptions").after("<textarea id='mySubscriptions' cols=70><textarea>");
     
     $("#controls-subscriptions").on("click", function () { 
         var mySubscriptions = {};
@@ -136,7 +137,7 @@ function loadHack() {
                 for(i in mySubscriptions) { 
                     mySubscriptions[i]["period"] = moment().diff(mySubscriptions[i]["firstTransactionDate"], 'days');
                 }
-                console.log(mySubscriptions);
+                $("#mySubscriptions").val(JSON.stringify(mySubscriptions));
             }
         });
     });
