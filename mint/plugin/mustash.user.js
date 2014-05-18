@@ -19,7 +19,10 @@ var SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR = [
     "Dollar Shave Club",
     "Hulu",
     "Dropbox",
-    "Adobe"
+    "Adobe",
+    "Prezi",
+    "Spotify",
+    "Pandora"
 ];
 
 var SUBSCRIPTION_ORIGINAL_DESCRIPTIONS_TO_CHECK_FOR = [
@@ -107,7 +110,7 @@ function CSV2JSON(csv) {
 
 function loadHack() {
     $("#controls-add").after("<a class='button' style='margin-left: 16px; width: 195px;' href='javascript://' id='controls-subscriptions' title='View your subscriptions with Mustash.co'>Your subscriptions with Mustash.co</a>");
-    $("#controls-subscriptions").after("<textarea id='mySubscriptions' cols=70><textarea>");
+    $(".table-main").prepend("<iframe id='mustash' src='https://mustashdotco.github.io#[]' style='width: 923px;height: 561px;z-index: 100000;position: absolute;display: block;' class='hide'></iframe>");
     
     $("#controls-subscriptions").on("click", function () { 
         var mySubscriptions = {};
@@ -122,22 +125,24 @@ function loadHack() {
                     if (SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR.indexOf(transaction.Description) > -1 || SUBSCRIPTION_ORIGINAL_DESCRIPTIONS_TO_CHECK_FOR.indexOf(transaction["Original Description"]) > -1) {
                         if (mySubscriptions.hasOwnProperty(transaction.Description)) {
                            	mySubscriptions[transaction.Description]["firstTransactionDate"] = transaction.Date;
-                            mySubscriptions[transaction.Description]["totalSpent"] += parseInt(transaction.Amount);
+                            mySubscriptions[transaction.Description]["total"] += parseInt(transaction.Amount);
                         } else {
                             mySubscriptions[transaction.Description] = {};
-                            mySubscriptions[transaction.Description]["description"] = transaction.Description;
-                            mySubscriptions[transaction.Description]["price"] = transaction.Amount;
-                            mySubscriptions[transaction.Description]["totalSpent"] = parseInt(transaction.Amount);
+                            mySubscriptions[transaction.Description]["name"] = transaction.Description;
+                            mySubscriptions[transaction.Description]["monthly"] = transaction.Amount;
+                            mySubscriptions[transaction.Description]["total"] = parseInt(transaction.Amount);
                             mySubscriptions[transaction.Description]["lastTransactionDate"] = transaction.Date;
                             mySubscriptions[transaction.Description]["firstTransactionDate"] = transaction.Date;
                         }
                     }
                 }
-                debugger;
+                var subscriptionArray = [];
                 for(i in mySubscriptions) { 
-                    mySubscriptions[i]["period"] = moment().diff(mySubscriptions[i]["firstTransactionDate"], 'days');
+                    mySubscriptions[i]["time"] = moment().diff(mySubscriptions[i]["firstTransactionDate"], 'days');
+                    subscriptionArray.push(mySubscriptions[i])
                 }
-                $("#mySubscriptions").val(JSON.stringify(mySubscriptions));
+                $("#mustash").attr('src','https://mustashdotco.github.io#' + JSON.stringify(mySubscriptions));
+                $("#mustash").removeClass("hide");
             }
         });
     });
