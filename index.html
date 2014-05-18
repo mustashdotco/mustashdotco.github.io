@@ -19,26 +19,11 @@
     </header>
     <div class="main">
       <div class="subscriptions">
-        <table>
-          <thead>
-            <tr>
-              <th class="small-head">My <br />subscriptions:</th>
-              <th class="small-head">Prices of my <br />subscriptions:</th>
-              <th class="small-head">Total expenses <br />as of today:</th>
-              <th class="small-head">How long I have <br /> been subscribed:</th>
-              <th class="small-head">&nbsp;</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="subscription in subscriptions">
-              <td>{{subscription.name}}</td>
-              <td>{{subscription.monthly}}</td>
-              <td>{{subscription.total}}</td>
-              <td>{{subscription.time}}</td>
-              <td><input type="checkbox" /></td>
-            </tr>
-          </tbody>
-        </table>
+        <ul>
+          <li>You need to install <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en">tampermonkey for chrome</a> first</li>
+          <li>Install the Mustash.co Mint extension by<a href="/mint/plugin/mustash.user.js">clicking here</a></li>
+          <li>Visit the <a href="https://wwws.mint.com/transaction.event">Transation page in mint</a> and click on the "Your subscriptions with Mustash.co" button (you may need to reload the page for it to work)</li>
+        </ul> 
       </div>
       <div class="cta-cols">
         <div class="cta-button">
@@ -52,23 +37,7 @@
       </div>
     </div>
     <div class="charts">
-      <h2 class="small-head">What is total of my subscription cost over time:</h2>
-      <line-chart class="line-chart"
-                  data="[[10, 12, 13, 9, 7, 30, 28, 28, 26, 23, 12, 15],
-                        [5, 9, 18, 6, 10, 19, 28, 18, 10, 5, 8, 16]]"
-                  by-month
-                  width="280px;">
-      </line-chart>
-
-      <div class="pie-container">
-        <h2 class="chart-header">Total cost for all my subscriptions: <span class="price">$350</span></h2>
-        <pie-chart class="pie-chart" 
-                   data="[20, 40, 40]"
-                   height="150"
-                   width="150">
-        </pie-chart>
-      </div>
-
+    
       <div class="charts-key">
         <h2 class="charts-key-label">My <br />Stash</h2>
         <ul>
@@ -90,12 +59,3 @@
   <script src="http://mustash.co/mint/js/app.js"></script>
 </body>
 </html>
-
-<!-- Hi there! This is mustash.co!
-<br>
-<br>
-<ul>
-  <li>You need to install <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en">tampermonkey for chrome</a> first</li>
-  <li>Install the Mustash.co Mint extension by<a href="/mint/plugin/mustash.user.js">clicking here</a></li>
-  <li>Visit the <a href="https://wwws.mint.com/transaction.event">Transation page in mint</a> and click on the "Your subscriptions with Mustash.co" button (you may need to reload the page for it to work)</li>
-</ul> -->
