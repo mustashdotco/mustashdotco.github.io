@@ -22,7 +22,9 @@ var SUBSCRIPTION_DESCRIPTIONS_TO_CHECK_FOR = [
     "Adobe",
     "Prezi",
     "Spotify",
-    "Pandora"
+    "Pandora",
+    "GoDaddy.com",
+    "AT&T"
 ];
 
 var SUBSCRIPTION_ORIGINAL_DESCRIPTIONS_TO_CHECK_FOR = [
