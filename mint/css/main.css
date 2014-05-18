@@ -181,18 +181,11 @@ header {
 /* line 179, /Users/david/Sites/b2b_weekend/less/main.less */
 .pie-container .price {
   position: absolute;
-  bottom: 44px;
-  font-size: 52px;
-  opacity: .7;
+  bottom: 56px;
+  font-size: 29px;
   left: 0;
   right: 0;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: white;
-  text-shadow: 2px 2px #929191, -2px -2px #929191, 0px -2px #929191, -2px 0;
   text-align: center;
-  -webkit-transform: rotate(-10deg);
-  -ms-transform: rotate(-10deg);
-  transform: rotate(-10deg);
   z-index: 30;
 }
 /* line 196, /Users/david/Sites/b2b_weekend/less/main.less */
